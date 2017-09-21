@@ -1,0 +1,8 @@
+# notemplating
+version: '2'
+services:
+  scheduler:
+    image: registry.gitlab.com/dhiemstra/rancher-scheduler
+    labels:
+      io.rancher.container.create_agent: 'true'
+      io.rancher.container.agent.role: environment
