@@ -20,7 +20,7 @@ table.table.table-striped
         td.text-right
           = link_to 'edit', edit_event_path(event)
           span = " - "
-          = link_to 'delete', event, data: { confirm: 'Are you sure?' }, method: :delete
+          = link_to 'delete', event_path(event), data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 = link_to 'New Event', new_event_path, class: 'btn btn-success'

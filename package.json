@@ -1,5 +1,7 @@
 {
   "name": "scheduler",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "rails-ujs": "^5.1.4"
+  }
 }

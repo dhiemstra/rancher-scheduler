@@ -1,6 +1,6 @@
 ARG ruby_version=2.4
 
-FROM ruby:$ruby_version-jessie
+FROM circleci:$ruby_version-node
 
 ENV APP_PATH=/app
 ENV RANCHER_CLI_VERSION=v0.6.4
@@ -24,6 +24,9 @@ WORKDIR $APP_PATH
 
 COPY Gemfile Gemfile.lock $APP_PATH/
 RUN bundle install --path /data/bundle
+
+COPY package.json yarn.lock $APP_PATH/
+RUN yarn
 
 COPY . $APP_PATH
 RUN bundle exec rake assets:precompile
