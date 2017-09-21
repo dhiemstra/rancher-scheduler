@@ -3,6 +3,13 @@ version: '2'
 services:
   scheduler:
     image: registry.gitlab.com/dhiemstra/rancher-scheduler
+    restart: always
+    labels:
+      io.rancher.sidekicks: clockwork
+  clockwork:
+    image: registry.gitlab.com/dhiemstra/rancher-scheduler
+    command: clockwork
+    restart: always
     labels:
       io.rancher.container.create_agent: 'true'
       io.rancher.container.agent.role: environment

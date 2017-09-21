@@ -2,3 +2,5 @@ version: '2'
 services:
   scheduler:
     start_on_create: true
+  clockwork:
+    start_on_create: true

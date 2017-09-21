@@ -1,12 +1,11 @@
-require_relative 'boot'
-require "rails"
-require "active_model/railtie"
-require "active_record/railtie"
-require "action_controller/railtie"
+require 'sinatra/base'
 
 Bundler.require(*Rails.groups)
 
-module Scheduler
-  class Application < Rails::Application
+module Scheduler < Sinatra::Base
+  set :sessions, true
+
+  get '/' do
+    'Hello world!'
   end
 end

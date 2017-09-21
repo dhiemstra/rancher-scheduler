@@ -2,6 +2,7 @@ ARG ruby_version=2.4
 
 FROM ruby:$ruby_version-jessie
 
+ENV APP_PATH=/app
 ENV RANCHER_CLI_VERSION=v0.6.4
 
 RUN \
@@ -16,13 +17,14 @@ chmod a+x rancher && \
 apt-get autoremove -y curl && \
 rm -rf /var/lib/apt/lists/* && \
 rm -rf /usr/share/{doc,man} && \
-mkdir /app
+mkdir $APP_PATH
 
-WORKDIR /app
+WORKDIR $APP_PATH
 
-COPY . /app/
+COPY . $APP_PATH
 
 # Anything better for the env variables?
 RUN bundle
 
-CMD ["bundle", "exec", "clockwork", "clock.rb"]
+ENTRYPOINT ["bin/docker-entrypoint.sh"]
+CMD ["web"]
