@@ -14,6 +14,8 @@ services:
       - db:db
     depends_on:
       - db
+    labels:
+      io.rancher.container.pull_image: 'always'
   clockwork:
     image: registry.gitlab.com/dhiemstra/rancher-scheduler:latest
     command: clockwork
@@ -27,6 +29,7 @@ services:
     labels:
       io.rancher.container.create_agent: 'true'
       io.rancher.container.agent.role: environment
+      io.rancher.container.pull_image: 'always'
   db:
     image: postgres:9.6
     volumes:

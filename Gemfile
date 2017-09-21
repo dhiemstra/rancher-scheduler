@@ -13,4 +13,5 @@ gem 'puma', '~> 3.7'
 gem 'slim-rails'
 gem 'sass-rails', '~> 5.0'
 
-gem 'clockwork'
+gem 'clockwork', require: nil
+gem 'httparty', require: nil
