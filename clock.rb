@@ -18,8 +18,9 @@ module Clockwork
     logger.info "Running event ##{event.id}.."
 
     begin
-      output = Timeout::timeout(5) {
-        %x(rancher docker run -it --rm #{event.image} #{event.command} 2>&1)
+      output = Timeout::timeout(120) {
+        %x(rancher start #{event.image})
+        %x(rancher docker exec -it #{event.image} #{event.command} 2>&1)
       }
       exit_code = $?.exitstatus
       error_message = output if exit_code != 0
