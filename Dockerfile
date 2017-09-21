@@ -4,6 +4,7 @@ FROM ruby:$ruby_version-jessie
 
 ENV APP_PATH=/app
 ENV RANCHER_CLI_VERSION=v0.6.4
+ENV RAILS_ENV=production
 
 RUN \
 apt-get update && \

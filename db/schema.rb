@@ -18,11 +18,11 @@ ActiveRecord::Schema.define(version: 20170921131618) do
   create_table "events", force: :cascade do |t|
     t.integer "frequency_quantity", null: false
     t.string "period", null: false
-    t.string "stack", null: false
-    t.string "command", null: false
     t.string "at"
+    t.string "image", null: false
+    t.string "command", null: false
     t.datetime "last_run_at"
-    t.integer "last_exit_status"
+    t.integer "last_exit_code"
     t.text "last_error_message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
