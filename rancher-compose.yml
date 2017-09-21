@@ -9,7 +9,7 @@ services:
       unhealthy_threshold: 3
       interval: 10000
       strategy: recreate
-      request_line: GET / HTTP/1.0
+      request_line: GET /ping.html HTTP/1.0
   clockwork:
     start_on_create: true
   db:
