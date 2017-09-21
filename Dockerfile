@@ -23,8 +23,6 @@ WORKDIR $APP_PATH
 
 COPY . $APP_PATH
 
-# Anything better for the env variables?
 RUN bundle
 
-ENTRYPOINT ["bin/docker-entrypoint.sh"]
-CMD ["web"]
+ENTRYPOINT ["/app/bin/docker-entrypoint.sh"]

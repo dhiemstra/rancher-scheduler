@@ -2,12 +2,12 @@
 version: '2'
 services:
   scheduler:
-    image: registry.gitlab.com/dhiemstra/rancher-scheduler
+    image: registry.gitlab.com/dhiemstra/rancher-scheduler:latest
     restart: always
     labels:
       io.rancher.sidekicks: clockwork
   clockwork:
-    image: registry.gitlab.com/dhiemstra/rancher-scheduler
+    image: registry.gitlab.com/dhiemstra/rancher-scheduler:latest
     command: clockwork
     restart: always
     labels:

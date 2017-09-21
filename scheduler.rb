@@ -1,8 +1,9 @@
+require 'bundler'
 require 'sinatra/base'
 
-Bundler.require(*Rails.groups)
+Bundler.require
 
-module Scheduler < Sinatra::Base
+class Scheduler < Sinatra::Base
   set :sessions, true
 
   get '/' do

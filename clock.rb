@@ -1,2 +1,7 @@
 require 'clockwork'
-include Clockwork
+
+module Clockwork
+  handler do |job|
+    puts "Running #{job}"
+  end
+end
