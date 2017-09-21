@@ -1,0 +1,26 @@
+= form_for @event do |f|
+  - if @event.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@event.errors.count, "error")} prohibited this event from being saved:"
+      ul
+        - @event.errors.full_messages.each do |message|
+          li = message
+
+  .form-group
+    label Command
+    = f.text_field :command, class: 'form-control'
+
+  .form-group
+    label Image
+    = f.text_field :image, class: 'form-control'
+    small.text-muted e.g. debian:jessie
+
+  .form-group
+    label Schedule
+    .form-inline
+      = f.text_field :frequency_quantity, type: :number, class: 'form-control mr-1'
+      = f.select :period, Event::PERIODS.map { |p| [p.pluralize.humanize, p] }, {}, class: 'form-control'
+
+  .actions
+    = f.submit 'Save', class: 'btn btn-success mr-1'
+    = link_to 'Back', events_path, class: 'btn btn-secondary'

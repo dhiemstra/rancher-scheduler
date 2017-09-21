@@ -1,17 +1,17 @@
 # notemplating
 version: '2'
 services:
-  # scheduler:
-  #   image: registry.gitlab.com/dhiemstra/rancher-scheduler:latest
-  #   restart: always
-  #   environment:
-  #     DATABASE_URL: db:3306/scheduler
-  #   links:
-  #     - db:db
-  #   depends_on:
-  #     - db
-  #   labels:
-  #     io.rancher.sidekicks: clockwork
+  scheduler:
+    image: registry.gitlab.com/dhiemstra/rancher-scheduler:latest
+    restart: always
+    environment:
+      DATABASE_URL: db:5432/scheduler
+    links:
+      - db:db
+    depends_on:
+      - db
+    labels:
+      io.rancher.sidekicks: clockwork
   clockwork:
     build: .
     command: clockwork

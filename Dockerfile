@@ -24,6 +24,8 @@ WORKDIR $APP_PATH
 
 COPY . $APP_PATH
 
-RUN bundle install --path /data/bundle
+RUN \
+bundle install --path /data/bundle && \
+bundle exec rake assets:precompile
 
 ENTRYPOINT ["/app/bin/docker-entrypoint.sh"]

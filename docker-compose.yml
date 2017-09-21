@@ -4,19 +4,21 @@ volumes:
   db:
     driver: rancher-nfs
 services:
-  scheduler:
+  web:
     image: registry.gitlab.com/dhiemstra/rancher-scheduler:latest
     restart: always
+    environment:
+      DATABASE_URL: db:5432/scheduler
     links:
       - db:db
     depends_on:
       - db
-    labels:
-      io.rancher.sidekicks: clockwork
   clockwork:
     image: registry.gitlab.com/dhiemstra/rancher-scheduler:latest
     command: clockwork
     restart: always
+    environment:
+      DATABASE_URL: db:5432/scheduler
     links:
       - db:db
     depends_on:
