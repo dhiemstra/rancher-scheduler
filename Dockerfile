@@ -2,7 +2,7 @@ ARG ruby_version=2.4
 
 FROM ruby:$ruby_version-jessie
 
-ENV RANCHER_CLI_VERSION=v1.0.0-alpha1
+ENV RANCHER_CLI_VERSION=v0.6.4
 
 RUN \
 apt-get update && \
@@ -23,6 +23,6 @@ WORKDIR /app
 COPY . /app/
 
 # Anything better for the env variables?
-RUN bundle && cp /app/env /root/.profile
+RUN bundle
 
 CMD ["bundle", "exec", "clockwork", "clock.rb"]
