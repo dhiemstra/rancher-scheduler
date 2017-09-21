@@ -1,6 +1,6 @@
 version: '2'
 services:
-  scheduler:
+  web:
     start_on_create: true
     health_check:
       healthy_threshold: 2
@@ -12,3 +12,12 @@ services:
       request_line: GET / HTTP/1.0
   clockwork:
     start_on_create: true
+  db:
+    start_on_create: true
+    health_check:
+      port: 5432
+      interval: 5000
+      unhealthy_threshold: 3
+      strategy: recreate
+      response_timeout: 5000
+      healthy_threshold: 3

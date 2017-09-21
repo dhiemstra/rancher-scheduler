@@ -8,7 +8,8 @@ services:
     image: registry.gitlab.com/dhiemstra/rancher-scheduler:latest
     restart: always
     environment:
-      DATABASE_URL: db:5432/scheduler
+      DATABASE_URL: postgres://postgres@db:5432/scheduler
+      SECRET_KEY_BASE: 519b9d07d06ea6aa36b074b8e3972d20fa04e0065c847478c90cb3086a2aa98d0aa9ada12374422502ea246ff86d156284870e1a85d9e680231e45bd81038845
     links:
       - db:db
     depends_on:
@@ -18,7 +19,7 @@ services:
     command: clockwork
     restart: always
     environment:
-      DATABASE_URL: db:5432/scheduler
+      DATABASE_URL: postgres://postgres@db:5432/scheduler
     links:
       - db:db
     depends_on:
