@@ -22,10 +22,10 @@ mkdir $APP_PATH
 
 WORKDIR $APP_PATH
 
-COPY . $APP_PATH
+COPY Gemfile Gemfile.lock $APP_PATH/
+RUN bundle install --path /data/bundle
 
-RUN \
-bundle install --path /data/bundle && \
-bundle exec rake assets:precompile
+COPY . $APP_PATH
+RUN bundle exec rake assets:precompile
 
 ENTRYPOINT ["/app/bin/docker-entrypoint.sh"]

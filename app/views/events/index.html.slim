@@ -1,4 +1,4 @@
-h1 Schedule
+h3 Schedule
 
 table.table.table-striped
   thead
@@ -12,14 +12,15 @@ table.table.table-striped
   tbody
     - @events.each do |event|
       tr
-        td = link_to event.command, edit_event_path(event)
-        td = event.image
-        td = event.schedule
-        td = l event.last_run_at, format: :short
         td
-          .btn-group
-            = link_to 'edit', edit_event_path(event), class: 'btn btn-secondary'
-            = link_to 'delete', event, data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-danger'
+          code = event.command
+        td = event.image
+        td every #{event.schedule}
+        td = event.last_run_at ? l(event.last_run_at, format: :short) : 'Never'
+        td.text-right
+          = link_to 'edit', edit_event_path(event)
+          span = " - "
+          = link_to 'delete', event, data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 = link_to 'New Event', new_event_path, class: 'btn btn-success'

@@ -12,6 +12,6 @@ class Event < ApplicationRecord
   end
 
   def schedule
-    "#{frequency_quantity} #{period.pluralize}"
+    "#{frequency_quantity} #{period.pluralize(frequency_quantity)}"
   end
 end
