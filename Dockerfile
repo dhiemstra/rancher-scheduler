@@ -23,6 +23,6 @@ WORKDIR $APP_PATH
 
 COPY . $APP_PATH
 
-RUN bundle
+RUN bundle install --path /data/bundle
 
 ENTRYPOINT ["/app/bin/docker-entrypoint.sh"]

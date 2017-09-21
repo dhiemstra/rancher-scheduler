@@ -1,8 +1,15 @@
-# frozen_string_literal: true
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
-git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
+git_source(:github) do |repo_name|
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  "https://github.com/#{repo_name}.git"
+end
 
-gem "puma"
-gem "sinatra"
-gem "clockwork"
+gem 'rails', '~> 5.1.3'
+gem 'pg', '~> 0.18'
+gem 'puma', '~> 3.7'
+
+gem 'sass-rails', '~> 5.0'
+# gem 'uglifier', '>= 1.3.0'
+
+gem 'clockwork'
