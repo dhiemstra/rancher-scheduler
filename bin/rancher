@@ -3,5 +3,6 @@
 export RANCHER_URL=${CATTLE_CONFIG_URL/v1/v2-beta\/schemas}
 export RANCHER_ACCESS_KEY=${CATTLE_ACCESS_KEY}
 export RANCHER_SECRET_KEY=${CATTLE_SECRET_KEY}
+export RANCHER_DOCKER_HOST=`/usr/local/bin/rancher hosts --format '{{.ID}}'`
 
 /usr/local/bin/rancher $@
